@@ -3,7 +3,7 @@
 A static, self-contained build of the OPSWAT MetaDefender **Aether / Analyze Result v2**
 UX prototype, hosted on GitHub Pages.
 
-**Live:** https://GITHUB_USER.github.io/aether-prototype/
+**Live:** https://balintsmail.github.io/aether-prototype/
 
 ## About this build
 
