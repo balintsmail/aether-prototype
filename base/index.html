@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aether Base — Prototype Starter</title>
+
+  <!-- Material Symbols (icons). Requires internet; renders as ligatures. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Brand -->
+    <div class="brand">
+      <span class="logo">A</span>
+      <span>Aether Base</span>
+    </div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="input-group" style="width:320px">
+        <span class="material-symbols-rounded">search</span>
+        <input type="text" placeholder="Search…" />
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-icon btn-ghost" title="Notifications">
+        <span class="material-symbols-rounded">notifications</span>
+      </button>
+      <button class="btn btn-icon btn-ghost" title="Help">
+        <span class="material-symbols-rounded">help</span>
+      </button>
+      <div class="avatar">BM</div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="nav-group">
+        <div class="nav-label">Overview</div>
+        <div class="nav-item active" data-page="start"><span class="material-symbols-rounded">dashboard</span> Dashboard</div>
+        <div class="nav-item" data-page="kit"><span class="material-symbols-rounded">widgets</span> Component Kit</div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-label">Workspace</div>
+        <div class="nav-item"><span class="material-symbols-rounded">folder</span> Projects</div>
+        <div class="nav-item"><span class="material-symbols-rounded">bar_chart</span> Reports</div>
+        <div class="nav-item"><span class="material-symbols-rounded">shield</span> Security</div>
+        <div class="nav-item"><span class="material-symbols-rounded">settings</span> Settings</div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="container">
+
+        <!-- ===================== BLANK START PAGE ===================== -->
+        <section id="page-start">
+          <div class="page-head">
+            <h1>Start here</h1>
+            <span class="badge badge-primary">blank canvas</span>
+            <div class="spacer" style="flex:1"></div>
+            <button class="btn btn-secondary"><span class="material-symbols-rounded">upload</span> Import</button>
+            <button class="btn btn-primary"><span class="material-symbols-rounded">add</span> New item</button>
+          </div>
+
+          <div class="alert alert-info mb-4">
+            <span class="material-symbols-rounded">info</span>
+            <div>This is your blank base. Delete this section and build your prototype here — every
+            Aether style, color, font and component is ready. Open <b>Component Kit</b> in the sidebar to copy blocks.</div>
+          </div>
+
+          <!-- example stat row so the canvas isn't empty; safe to delete -->
+          <div class="grid-4 mb-4">
+            <div class="card"><div class="card-body">
+              <div class="muted text-sm">Total scans</div>
+              <div class="stat mt-2">1,284</div>
+              <div class="badge badge-success mt-2"><span class="material-symbols-rounded">trending_up</span> +12%</div>
+            </div></div>
+            <div class="card"><div class="card-body">
+              <div class="muted text-sm">Threats blocked</div>
+              <div class="stat mt-2">37</div>
+              <div class="badge badge-danger mt-2"><span class="material-symbols-rounded">priority_high</span> action</div>
+            </div></div>
+            <div class="card"><div class="card-body">
+              <div class="muted text-sm">Avg. time</div>
+              <div class="stat mt-2">0.8s</div>
+              <div class="badge badge-neutral mt-2">stable</div>
+            </div></div>
+            <div class="card"><div class="card-body">
+              <div class="muted text-sm">Coverage</div>
+              <div class="stat mt-2">92%</div>
+              <div class="meter success mt-2"><span style="width:92%"></span></div>
+            </div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>Your canvas</h3><div style="flex:1"></div>
+              <button class="btn btn-ghost btn-sm"><span class="material-symbols-rounded">more_horiz</span></button>
+            </div>
+            <div class="card-body">
+              <p class="muted">Empty. Drop your content here.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== COMPONENT KIT ===================== -->
+        <section id="page-kit" hidden>
+          <div class="page-head"><h1>Component Kit</h1>
+            <span class="badge badge-neutral">copy any block</span></div>
+
+          <!-- Buttons -->
+          <div class="card mb-4"><div class="card-head"><h3>Buttons</h3></div>
+            <div class="card-body">
+              <div class="row wrap gap-2">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-ghost">Ghost</button>
+                <button class="btn btn-primary"><span class="material-symbols-rounded">download</span> With icon</button>
+                <button class="btn btn-secondary btn-sm">Small</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+                <button class="btn btn-icon btn-secondary"><span class="material-symbols-rounded">more_vert</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2 mb-4">
+            <!-- Form -->
+            <div class="card"><div class="card-head"><h3>Form fields</h3></div>
+              <div class="card-body">
+                <div class="field"><label>Text input</label><input class="input" placeholder="Enter a value"></div>
+                <div class="field"><label>Select</label>
+                  <select class="select"><option>Option A</option><option>Option B</option></select></div>
+                <div class="field"><label>Textarea</label><textarea class="textarea" placeholder="Notes…"></textarea></div>
+                <div class="row between">
+                  <span class="text-sm ink-2">Enable feature</span>
+                  <label class="toggle"><input type="checkbox" checked><span class="track"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Badges + alerts -->
+            <div class="card"><div class="card-head"><h3>Badges &amp; status</h3></div>
+              <div class="card-body">
+                <div class="row wrap gap-2 mb-4">
+                  <span class="badge badge-neutral">Neutral</span>
+                  <span class="badge badge-primary">Info</span>
+                  <span class="badge badge-success"><span class="material-symbols-rounded">check_circle</span> Clean</span>
+                  <span class="badge badge-caution">Suspicious</span>
+                  <span class="badge badge-warning">Warning</span>
+                  <span class="badge badge-danger"><span class="material-symbols-rounded">dangerous</span> Malicious</span>
+                </div>
+                <div class="row wrap gap-4 mb-4">
+                  <span class="row gap-2"><span class="dot dot-success"></span> Online</span>
+                  <span class="row gap-2"><span class="dot dot-warning"></span> Degraded</span>
+                  <span class="row gap-2"><span class="dot dot-danger"></span> Down</span>
+                  <span class="row gap-2"><span class="dot dot-neutral"></span> Idle</span>
+                </div>
+                <div class="col">
+                  <div class="alert alert-success"><span class="material-symbols-rounded">check_circle</span> File is clean.</div>
+                  <div class="alert alert-danger"><span class="material-symbols-rounded">dangerous</span> Threat detected.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs + table -->
+          <div class="card mb-4"><div class="card-head"><h3>Tabs &amp; table</h3></div>
+            <div class="card-body">
+              <div class="tabs mb-4">
+                <div class="tab active">Overview</div>
+                <div class="tab">Details</div>
+                <div class="tab">Engines</div>
+                <div class="tab">History</div>
+              </div>
+              <table class="table">
+                <thead><tr><th>Engine</th><th>Result</th><th>Confidence</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>Aegis</td><td><span class="badge badge-success">Clean</span></td>
+                    <td><div class="meter success"><span style="width:98%"></span></div></td>
+                    <td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+                  <tr><td>Sentinel</td><td><span class="badge badge-danger">Malicious</span></td>
+                    <td><div class="meter danger"><span style="width:87%"></span></div></td>
+                    <td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+                  <tr><td>Warden</td><td><span class="badge badge-caution">Suspicious</span></td>
+                    <td><div class="meter warning"><span style="width:64%"></span></div></td>
+                    <td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Modal trigger -->
+          <div class="card mb-4"><div class="card-head"><h3>Modal</h3></div>
+            <div class="card-body"><button class="btn btn-primary" id="openModal">Open modal</button></div>
+          </div>
+
+          <!-- Icon sampler -->
+          <div class="card"><div class="card-head"><h3>Material Symbols (rounded)</h3>
+            <div style="flex:1"></div>
+            <a href="https://fonts.google.com/icons" target="_blank" rel="noopener" class="text-sm">Browse all →</a></div>
+            <div class="card-body">
+              <div class="row wrap gap-4" style="font-size:0;color:var(--ink-2)">
+                <span class="material-symbols-rounded icon-lg">home</span>
+                <span class="material-symbols-rounded icon-lg">search</span>
+                <span class="material-symbols-rounded icon-lg">settings</span>
+                <span class="material-symbols-rounded icon-lg">shield</span>
+                <span class="material-symbols-rounded icon-lg">bug_report</span>
+                <span class="material-symbols-rounded icon-lg">verified</span>
+                <span class="material-symbols-rounded icon-lg">warning</span>
+                <span class="material-symbols-rounded icon-lg">cloud_upload</span>
+                <span class="material-symbols-rounded icon-lg">description</span>
+                <span class="material-symbols-rounded icon-lg">folder</span>
+                <span class="material-symbols-rounded icon-lg">visibility</span>
+                <span class="material-symbols-rounded icon-lg">download</span>
+                <span class="material-symbols-rounded icon-lg">delete</span>
+                <span class="material-symbols-rounded icon-lg">bar_chart</span>
+                <span class="material-symbols-rounded icon-lg">notifications</span>
+              </div>
+              <p class="muted text-sm mt-4" style="margin-bottom:0">Usage:
+                <code>&lt;span class="material-symbols-rounded"&gt;icon_name&lt;/span&gt;</code>
+                — add <code>icon-sm</code>/<code>icon-lg</code> or <code>icon-fill</code>.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal">
+      <div class="card-head"><h3>Confirm action</h3><div style="flex:1"></div>
+        <button class="btn btn-icon btn-ghost" data-close><span class="material-symbols-rounded">close</span></button></div>
+      <div class="card-body"><p class="muted" style="margin:0">This is a modal built from the Aether card styles. Wire up your own content.</p></div>
+      <div class="card-foot"><button class="btn btn-ghost" data-close>Cancel</button>
+        <button class="btn btn-primary" data-close>Confirm</button></div>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar page switching
+    const pages = { start: document.getElementById('page-start'), kit: document.getElementById('page-kit') };
+    document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        Object.entries(pages).forEach(([k, el]) => el.hidden = (k !== item.dataset.page));
+      });
+    });
+    // Tabs
+    document.querySelectorAll('.tabs').forEach(group => {
+      group.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+        group.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+      }));
+    });
+    // Modal
+    const modal = document.getElementById('modal');
+    document.getElementById('openModal').addEventListener('click', () => modal.hidden = false);
+    modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.hidden = true; });
+  </script>
+</body>
+</html>
