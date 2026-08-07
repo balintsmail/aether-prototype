@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aether Base — Financial Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="finance.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="brand"><span class="logo">A</span><span>Aether Base</span></div>
+
+    <header class="topbar">
+      <div class="input-group" style="width:320px">
+        <span class="material-symbols-rounded">search</span>
+        <input type="text" placeholder="Search instruments…" />
+      </div>
+      <div class="spacer"></div>
+      <span class="badge badge-success"><span class="material-symbols-rounded">circle</span> Market open</span>
+      <button class="btn btn-icon btn-ghost" title="Alerts"><span class="material-symbols-rounded">notifications</span></button>
+      <div class="avatar">BM</div>
+    </header>
+
+    <nav class="sidebar">
+      <div class="nav-group">
+        <div class="nav-label">Overview</div>
+        <a class="nav-item" href="index.html"><span class="material-symbols-rounded">dashboard</span> Dashboard</a>
+        <a class="nav-item" href="index.html"><span class="material-symbols-rounded">widgets</span> Component Kit</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-label">Financial Kit</div>
+        <div class="nav-item active" data-page="tables"><span class="material-symbols-rounded">table_rows</span> Tables &amp; blotters</div>
+        <div class="nav-item" data-page="cards"><span class="material-symbols-rounded">space_dashboard</span> Cards &amp; tiles</div>
+        <div class="nav-item" data-page="charts"><span class="material-symbols-rounded">show_chart</span> Charts</div>
+      </div>
+    </nav>
+
+    <main class="main">
+      <div class="container">
+
+        <!-- ================= TABLES ================= -->
+        <section id="page-tables">
+          <div class="page-head"><h1>Tables &amp; blotters</h1>
+            <span class="badge badge-neutral">dense · tabular · sortable</span></div>
+
+          <!-- Positions blotter -->
+          <div class="card mb-4">
+            <div class="card-head"><span class="material-symbols-rounded" style="color:var(--muted)">candlestick_chart</span>
+              <h3>Positions blotter</h3><div style="flex:1"></div>
+              <button class="btn btn-secondary btn-sm"><span class="material-symbols-rounded">filter_list</span> Filter</button>
+              <button class="btn btn-secondary btn-sm"><span class="material-symbols-rounded">download</span> Export</button>
+            </div>
+            <div style="overflow:auto;max-height:340px">
+              <table class="table-dense zebra">
+                <thead><tr>
+                  <th>Symbol</th><th>Side</th><th class="num">Qty</th><th class="num">Avg px</th>
+                  <th class="num">Last</th><th class="num">Mkt value</th>
+                  <th class="num th-sort desc">Day P&amp;L</th><th class="num">P&amp;L %</th><th>30d</th><th>Status</th>
+                </tr></thead>
+                <tbody id="blotter"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Fixed-income analytics -->
+            <div class="card">
+              <div class="card-head"><span class="material-symbols-rounded" style="color:var(--muted)">account_balance</span>
+                <h3>Fixed-income analytics</h3></div>
+              <div style="overflow:auto">
+                <table class="table-dense">
+                  <thead><tr><th>Instrument</th><th class="num">Coupon</th><th>Maturity</th>
+                    <th class="num">Price</th><th class="num">YTM</th><th class="num">Dur.</th>
+                    <th class="num">Spread</th><th>Rating</th></tr></thead>
+                  <tbody>
+                    <tr><td class="sym">UST 4⅜ '34</td><td class="num">4.375</td><td>15 May 34</td>
+                      <td class="num">98.42</td><td class="num">4.58%</td><td class="num">8.4</td><td class="num">+12</td><td><span class="rating">AAA</span></td></tr>
+                    <tr><td class="sym">Bund 2½ '33</td><td class="num">2.500</td><td>15 Aug 33</td>
+                      <td class="num">96.10</td><td class="num">2.94%</td><td class="num">7.9</td><td class="num">+4</td><td><span class="rating">AAA</span></td></tr>
+                    <tr><td class="sym">AAPL 3.85 '43</td><td class="num">3.850</td><td>04 May 43</td>
+                      <td class="num">88.75</td><td class="num">4.71%</td><td class="num">12.1</td><td class="num">+63</td><td><span class="rating">AA+</span></td></tr>
+                    <tr><td class="sym">F 6.10 '32</td><td class="num">6.100</td><td>19 Aug 32</td>
+                      <td class="num">101.30</td><td class="num">5.88%</td><td class="num">6.2</td><td class="num">+188</td><td><span class="rating" style="background:var(--warning-soft);color:var(--warning-deep)">BB+</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Reconciliation / exceptions (Duco-style) -->
+            <div class="card">
+              <div class="card-head"><span class="material-symbols-rounded" style="color:var(--muted)">rule</span>
+                <h3>Recon exceptions</h3><div style="flex:1"></div>
+                <span class="badge badge-danger">7 open</span></div>
+              <div style="overflow:auto">
+                <table class="table-dense">
+                  <thead><tr><th>Break</th><th>Field</th><th class="num">Diff</th>
+                    <th>Category</th><th>Priority</th><th>Status</th><th>Age</th></tr></thead>
+                  <tbody>
+                    <tr><td class="sym">BRK-1042</td><td>Net amount</td><td class="num neg">-1,250.00</td>
+                      <td><span class="tag">Cash</span></td><td><span class="pri pri-high">High</span></td>
+                      <td><span class="badge badge-danger">Open</span></td><td class="num">2h</td></tr>
+                    <tr><td class="sym">BRK-1041</td><td>Settle date</td><td class="num">T+1</td>
+                      <td><span class="tag">Trade</span></td><td><span class="pri pri-med">Med</span></td>
+                      <td><span class="badge badge-caution">Investigating</span></td><td class="num">5h</td></tr>
+                    <tr><td class="sym">BRK-1038</td><td>Quantity</td><td class="num neg">-500</td>
+                      <td><span class="tag">Position</span></td><td><span class="pri pri-high">High</span></td>
+                      <td><span class="badge badge-danger">Open</span></td><td class="num">1d</td></tr>
+                    <tr><td class="sym">BRK-1035</td><td>FX rate</td><td class="num">0.0004</td>
+                      <td><span class="tag">Cash</span></td><td><span class="pri pri-low">Low</span></td>
+                      <td><span class="badge badge-success">Resolved</span></td><td class="num">2d</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CARDS ================= -->
+        <section id="page-cards" hidden>
+          <div class="page-head"><h1>Cards &amp; tiles</h1>
+            <span class="badge badge-neutral">KPIs · quote · ticket · ESG · KYC</span></div>
+
+          <!-- KPI tiles -->
+          <div class="grid-4 mb-4" id="kpis"></div>
+
+          <div class="grid-3 mb-4">
+            <!-- Market quote -->
+            <div class="card"><div class="card-body">
+              <div class="row between">
+                <div><div class="row gap-2"><b style="font-size:15px">BTC-USD</b><span class="tag">Spot</span></div>
+                  <div class="muted text-sm">Coinbase · Kraken · aggregated</div></div>
+                <span class="badge badge-success">+2.14%</span>
+              </div>
+              <div class="quote-last mt-2">64,182<span style="font-size:18px;color:var(--muted)">.50</span></div>
+              <svg class="chart" viewBox="0 0 300 70" preserveAspectRatio="none" style="height:64px">
+                <defs><linearGradient id="qg" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="var(--pos)" stop-opacity=".28"/><stop offset="1" stop-color="var(--pos)" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,52 L25,48 50,50 75,40 100,44 125,30 150,34 175,22 200,26 225,16 250,20 275,10 300,14 300,70 0,70 Z" fill="url(#qg)"/>
+                <path d="M0,52 L25,48 50,50 75,40 100,44 125,30 150,34 175,22 200,26 225,16 250,20 275,10 300,14" fill="none" stroke="var(--pos)" stroke-width="2"/>
+              </svg>
+              <div class="range"><i style="left:72%"></i></div>
+              <div class="row between text-sm muted"><span>L 62,740</span><span>H 64,510</span></div>
+              <div class="grid-2 mt-2">
+                <div class="quote-row"><span>Bid</span><b class="pos-plain">64,180.00</b></div>
+                <div class="quote-row"><span>Ask</span><b>64,185.00</b></div>
+              </div>
+            </div></div>
+
+            <!-- Order ticket -->
+            <div class="card"><div class="card-head"><h3>Order ticket</h3></div>
+              <div class="card-body">
+                <div class="row gap-2 mb-4">
+                  <button class="btn btn-sm" style="flex:1;background:var(--pos);color:#fff">Buy</button>
+                  <button class="btn btn-sm btn-secondary" style="flex:1">Sell</button>
+                </div>
+                <div class="field"><label>Order type</label>
+                  <select class="select"><option>Limit</option><option>Market</option><option>Stop</option></select></div>
+                <div class="grid-2">
+                  <div class="field"><label>Quantity</label><input class="input num" value="0.50"></div>
+                  <div class="field"><label>Limit price</label><input class="input num" value="64,180"></div>
+                </div>
+                <div class="quote-row"><span>Est. cost</span><b>32,090.00 USD</b></div>
+                <div class="quote-row" style="border:0"><span>Fees (0.10%)</span><b>32.09 USD</b></div>
+                <button class="btn btn-primary mt-2" style="width:100%;background:var(--pos)">Place buy order</button>
+              </div>
+            </div>
+
+            <!-- ESG score -->
+            <div class="card"><div class="card-head"><h3>ESG score</h3><div style="flex:1"></div>
+              <span class="badge badge-success">Low risk</span></div>
+              <div class="card-body">
+                <div class="row gap-4" style="align-items:center">
+                  <svg viewBox="0 0 120 70" style="width:120px;flex:none">
+                    <path d="M10,62 A50,50 0 0,1 110,62" fill="none" stroke="var(--border)" stroke-width="10" stroke-linecap="round"/>
+                    <path d="M10,62 A50,50 0 0,1 110,62" fill="none" stroke="var(--pos)" stroke-width="10" stroke-linecap="round"
+                      stroke-dasharray="157" stroke-dashoffset="47"/>
+                    <text x="60" y="56" text-anchor="middle" style="font-size:22px;font-weight:600;fill:var(--ink)">72</text>
+                    <text x="60" y="68" text-anchor="middle" style="font-size:9px;fill:var(--muted)">/ 100</text>
+                  </svg>
+                  <div style="flex:1" class="col gap-2">
+                    <div><div class="row between text-sm"><span>Environmental</span><b class="num">81</b></div>
+                      <div class="meter success"><span style="width:81%"></span></div></div>
+                    <div><div class="row between text-sm"><span>Social</span><b class="num">68</b></div>
+                      <div class="meter"><span style="width:68%"></span></div></div>
+                    <div><div class="row between text-sm"><span>Governance</span><b class="num">66</b></div>
+                      <div class="meter warning"><span style="width:66%"></span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- KYC onboarding -->
+            <div class="card"><div class="card-head"><h3>KYC onboarding</h3><div style="flex:1"></div>
+              <span class="badge badge-caution">Medium risk</span></div>
+              <div class="card-body">
+                <div class="meter mb-4"><span style="width:60%"></span></div>
+                <div class="stepper">
+                  <div class="step done"><span class="marker material-symbols-rounded icon-sm">check</span>
+                    <div><div class="step-title">Identity verified</div><div class="step-sub">Passport · matched 99.2%</div></div></div>
+                  <div class="step done"><span class="marker material-symbols-rounded icon-sm">check</span>
+                    <div><div class="step-title">Sanctions &amp; PEP screening</div><div class="step-sub">No hits · 4 lists checked</div></div></div>
+                  <div class="step active"><span class="marker material-symbols-rounded icon-sm">sync</span>
+                    <div><div class="step-title">Risk assessment</div><div class="step-sub">In review · assigned to Compliance</div></div></div>
+                  <div class="step pending"><span class="marker material-symbols-rounded icon-sm">lock</span>
+                    <div><div class="step-title">Final approval</div><div class="step-sub">Pending</div></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Allocation donut + exception summary -->
+            <div class="col gap-4">
+              <div class="card"><div class="card-head"><h3>Allocation</h3></div>
+                <div class="card-body row gap-6" style="align-items:center">
+                  <svg viewBox="0 0 120 120" style="width:120px;flex:none">
+                    <circle cx="60" cy="60" r="46" fill="none" stroke="var(--c1)" stroke-width="20" stroke-dasharray="130 159" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="46" fill="none" stroke="var(--c2)" stroke-width="20" stroke-dasharray="72 217" stroke-dashoffset="-130" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="46" fill="none" stroke="var(--c3)" stroke-width="20" stroke-dasharray="46 243" stroke-dashoffset="-202" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="46" fill="none" stroke="var(--c4)" stroke-width="20" stroke-dasharray="41 248" stroke-dashoffset="-248" transform="rotate(-90 60 60)"/>
+                    <text x="60" y="58" text-anchor="middle" style="font-size:18px;font-weight:600;fill:var(--ink)">$4.2M</text>
+                    <text x="60" y="72" text-anchor="middle" style="font-size:9px;fill:var(--muted)">AUM</text>
+                  </svg>
+                  <div class="legend" style="flex-direction:column;gap:8px">
+                    <span><i style="background:var(--c1)"></i> Equities <b class="num">45%</b></span>
+                    <span><i style="background:var(--c2)"></i> Fixed income <b class="num">25%</b></span>
+                    <span><i style="background:var(--c3)"></i> Crypto <b class="num">16%</b></span>
+                    <span><i style="background:var(--c4)"></i> Cash <b class="num">14%</b></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CHARTS ================= -->
+        <section id="page-charts" hidden>
+          <div class="page-head"><h1>Charts</h1>
+            <span class="badge badge-neutral">pure SVG · themeable · no libraries</span></div>
+
+          <div class="grid-2 mb-4">
+            <!-- Price / area chart -->
+            <div class="card"><div class="card-head"><h3>Price — area &amp; line</h3><div style="flex:1"></div>
+              <div class="tabs" style="border:0"><div class="tab">1D</div><div class="tab active">1W</div><div class="tab">1M</div><div class="tab">1Y</div></div></div>
+              <div class="card-body">
+                <svg class="chart" viewBox="0 0 620 240">
+                  <defs><linearGradient id="ag" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0" stop-color="var(--c1)" stop-opacity=".22"/><stop offset="1" stop-color="var(--c1)" stop-opacity="0"/></linearGradient></defs>
+                  <!-- gridlines + y axis -->
+                  <g class="axis">
+                    <line class="grid" x1="40" y1="20"  x2="600" y2="20"/><text x="34" y="24" text-anchor="end">160</text>
+                    <line class="grid" x1="40" y1="70"  x2="600" y2="70"/><text x="34" y="74" text-anchor="end">150</text>
+                    <line class="grid" x1="40" y1="120" x2="600" y2="120"/><text x="34" y="124" text-anchor="end">140</text>
+                    <line class="grid" x1="40" y1="170" x2="600" y2="170"/><text x="34" y="174" text-anchor="end">130</text>
+                    <line class="grid" x1="40" y1="200" x2="600" y2="200"/>
+                    <text x="40"  y="216">Mon</text><text x="145" y="216">Tue</text><text x="250" y="216">Wed</text>
+                    <text x="355" y="216">Thu</text><text x="460" y="216">Fri</text><text x="560" y="216">Now</text>
+                  </g>
+                  <path class="area" fill="url(#ag)" d="M40,150 L133,158 226,120 319,132 412,88 505,96 600,58 L600,200 40,200 Z"/>
+                  <path class="line" d="M40,150 L133,158 226,120 319,132 412,88 505,96 600,58"/>
+                  <circle class="dot" cx="600" cy="58" r="4"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Candlestick -->
+            <div class="card"><div class="card-head"><h3>OHLC — candlestick</h3></div>
+              <div class="card-body">
+                <svg class="chart" viewBox="0 0 620 240">
+                  <g class="axis">
+                    <line class="grid" x1="40" y1="30" x2="600" y2="30"/><text x="34" y="34" text-anchor="end">68k</text>
+                    <line class="grid" x1="40" y1="90" x2="600" y2="90"/><text x="34" y="94" text-anchor="end">65k</text>
+                    <line class="grid" x1="40" y1="150" x2="600" y2="150"/><text x="34" y="154" text-anchor="end">62k</text>
+                    <line class="grid" x1="40" y1="200" x2="600" y2="200"/><text x="34" y="204" text-anchor="end">59k</text>
+                  </g>
+                  <g id="candles"></g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2 mb-4">
+            <!-- Volume bars -->
+            <div class="card"><div class="card-head"><h3>Volume — bars</h3></div>
+              <div class="card-body">
+                <svg class="chart" viewBox="0 0 620 200">
+                  <g class="axis"><line class="grid" x1="40" y1="170" x2="600" y2="170"/>
+                    <text x="40" y="188">09:30</text><text x="300" y="188">12:00</text><text x="560" y="188">16:00</text></g>
+                  <g id="volbars"></g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Order book depth -->
+            <div class="card"><div class="card-head"><h3>Order book — depth</h3><div style="flex:1"></div>
+              <span class="mono text-sm muted">BTC-USD</span></div>
+              <div class="card-body" style="padding:8px 0">
+                <div class="row between text-sm muted" style="padding:0 8px 4px"><span>Price</span><span>Size</span><span>Total</span></div>
+                <div id="asks"></div>
+                <div class="depth-spread">spread 5.00 · 0.008%</div>
+                <div id="bids"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sector heatmap -->
+          <div class="card"><div class="card-head"><h3>Sector performance — heatmap</h3><div style="flex:1"></div>
+            <span class="legend text-sm"><span><i style="background:var(--neg)"></i> down</span><span><i style="background:var(--pos)"></i> up</span></span></div>
+            <div class="card-body"><div class="heat" id="heat" style="grid-template-columns:repeat(6,1fr)"></div></div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // ---- page switching ----
+    const pages = {tables:'page-tables', cards:'page-cards', charts:'page-charts'};
+    document.querySelectorAll('.nav-item[data-page]').forEach(item=>{
+      item.addEventListener('click',()=>{
+        document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+        item.classList.add('active');
+        Object.entries(pages).forEach(([k,id])=>document.getElementById(id).hidden=(k!==item.dataset.page));
+      });
+    });
+    document.querySelectorAll('.tabs').forEach(g=>g.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+      g.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active');})));
+
+    // ---- helpers ----
+    const fmt = n => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const sparkPath = (arr,w=88,h=24)=>{const mn=Math.min(...arr),mx=Math.max(...arr),r=mx-mn||1;
+      return arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-((v-mn)/r)*h).toFixed(1)}`).join(' ');};
+    const spark = (arr,up)=>{const c=up?'var(--pos)':'var(--neg)';
+      return `<svg class="spark" width="88" height="24" viewBox="0 0 88 24"><polyline points="${sparkPath(arr)}" fill="none" stroke="${c}" stroke-width="1.5"/></svg>`;};
+
+    // ---- positions blotter ----
+    const rows=[
+      ['AAPL','buy',1200,178.40,189.22,[170,172,168,175,180,184,189],true],
+      ['MSFT','buy',800,401.10,415.60,[398,402,399,405,410,412,416],true],
+      ['NVDA','buy',450,118.20,131.05,[110,114,112,120,124,128,131],true],
+      ['TSLA','sell',600,242.80,229.40,[250,246,244,238,235,232,229],false],
+      ['JPM','buy',900,196.30,201.15,[192,194,193,197,199,200,201],true],
+      ['META','sell',300,512.00,498.70,[520,516,510,505,502,500,499],false],
+      ['AMZN','buy',700,181.90,186.25,[176,178,180,182,183,185,186],true],
+    ];
+    document.getElementById('blotter').innerHTML = rows.map(([s,side,qty,avg,last,sp,up])=>{
+      const mv=qty*last, pnl=(last-avg)*qty*(side==='sell'?-1:1), pct=pnl/(avg*qty)*100;
+      const cls=pnl>=0?'pos':'neg';
+      return `<tr><td class="sym">${s}</td>
+        <td><span class="side side-${side}">${side}</span></td>
+        <td class="num">${qty.toLocaleString()}</td><td class="num">${fmt(avg)}</td><td class="num">${fmt(last)}</td>
+        <td class="num">${mv.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
+        <td class="num ${cls}">${pnl>=0?'+':''}${fmt(pnl)}</td>
+        <td class="num ${cls}">${pct>=0?'+':''}${pct.toFixed(2)}%</td>
+        <td>${spark(sp,up)}</td>
+        <td><span class="badge ${pnl>=0?'badge-success':'badge-danger'}">${pnl>=0?'Profit':'Loss'}</span></td></tr>`;
+    }).join('');
+
+    // ---- KPI tiles ----
+    const kpis=[
+      ['AUM','$4.24M','+1.8% today',true,[40,42,41,44,46,45,48]],
+      ['Net P&L (Day)','+$18,420','+0.44%',true,[10,12,11,14,13,16,18]],
+      ['VaR (95%, 1d)','$82,100','-3.1% vs avg',false,[90,88,86,85,84,83,82]],
+      ['Open positions','37','4 new',true,[30,31,33,34,35,36,37]],
+    ];
+    document.getElementById('kpis').innerHTML = kpis.map(([l,v,d,up,sp])=>
+      `<div class="kpi"><span class="label">${l}</span><span class="value">${v}</span>
+       <span class="delta ${up?'pos':'neg'}">${d}</span><span class="spark">${spark(sp,up)}</span></div>`).join('');
+
+    // ---- candlesticks ----
+    const yFor = p => 30 + (68000-p)/(68000-59000)*(200-30);
+    const candles=[[62.4,63.1,62.0,62.9],[62.9,63.4,62.6,63.0],[63.0,63.2,61.8,62.1],[62.1,62.5,61.2,61.4],
+      [61.4,62.8,61.3,62.7],[62.7,63.9,62.5,63.8],[63.8,64.2,63.1,63.4],[63.4,64.6,63.3,64.5],
+      [64.5,65.1,64.0,64.2],[64.2,64.4,63.0,63.2],[63.2,64.0,63.1,63.9],[63.9,65.2,63.8,65.0],
+      [65.0,66.1,64.8,66.0],[66.0,66.4,65.2,65.4],[65.4,66.8,65.3,66.7],[66.7,67.3,66.0,66.2],
+      [66.2,66.5,65.1,65.3],[65.3,66.6,65.2,66.5],[66.5,67.6,66.3,67.4],[67.4,68.0,66.9,67.1]]
+      .map(c=>c.map(v=>v*1000));
+    const cw=560/candles.length;
+    document.getElementById('candles').innerHTML = candles.map((c,i)=>{
+      const [o,h,l,cl]=c, x=40+i*cw+cw/2, up=cl>=o, col=up?'var(--pos)':'var(--neg)';
+      const yo=yFor(o),yc=yFor(cl),yh=yFor(h),yl=yFor(l),bt=Math.min(yo,yc),bh=Math.max(2,Math.abs(yo-yc));
+      return `<line x1="${x}" x2="${x}" y1="${yh}" y2="${yl}" stroke="${col}" stroke-width="1.5"/>
+        <rect x="${x-cw*0.3}" y="${bt}" width="${cw*0.6}" height="${bh}" fill="${col}"/>`;
+    }).join('');
+
+    // ---- volume bars ----
+    const vols=[6,8,5,9,12,7,10,14,9,11,8,13,7,10,6,9,12,8,11,7];
+    const vw=560/vols.length, vmax=Math.max(...vols);
+    document.getElementById('volbars').innerHTML = vols.map((v,i)=>{
+      const h=(v/vmax)*150, x=40+i*vw, up=i%3!==1;
+      return `<rect x="${x+2}" y="${170-h}" width="${vw-4}" height="${h}" rx="1" fill="${up?'var(--c1)':'var(--muted-2)'}" opacity=".85"/>`;
+    }).join('');
+
+    // ---- order book depth ----
+    const mid=64182.5;
+    let cum=0; const asks=[]; for(let i=6;i>=1;i--){const px=mid+i*5, sz=Math.random()*1.5+0.3; asks.push([px,sz]);}
+    const asksCum=[]; cum=0; for(let i=asks.length-1;i>=0;i--){cum+=asks[i][1]; asksCum[i]=cum;}
+    const bids=[]; cum=0; for(let i=1;i<=6;i++){const px=mid-i*5, sz=Math.random()*1.5+0.3; cum+=sz; bids.push([px,sz,cum]);}
+    const maxTot=Math.max(asksCum[0],bids[bids.length-1][2]);
+    document.getElementById('asks').innerHTML = asks.map((a,i)=>{const [px,sz]=a,tot=asksCum[i];
+      return `<div class="depth-row ask"><span class="bar" style="width:${tot/maxTot*100}%"></span>
+        <span class="px">${px.toFixed(2)}</span><span class="sz">${sz.toFixed(4)}</span><span class="tot">${tot.toFixed(3)}</span></div>`;}).join('');
+    document.getElementById('bids').innerHTML = bids.map(([px,sz,tot])=>
+      `<div class="depth-row bid"><span class="bar" style="width:${tot/maxTot*100}%"></span>
+        <span class="px">${px.toFixed(2)}</span><span class="sz">${sz.toFixed(4)}</span><span class="tot">${tot.toFixed(3)}</span></div>`).join('');
+
+    // ---- sector heatmap ----
+    const sectors=[['Tech',2.4],['Financials',1.1],['Energy',-1.8],['Health',0.6],['Cons. Disc.',-0.9],['Industrials',1.5],
+      ['Utilities',-0.4],['Materials',0.9],['Real Estate',-1.2],['Comm.',2.0],['Staples',0.2],['Crypto',3.6]];
+    const heatColor=v=>{const t=Math.min(Math.abs(v)/3.6,1); const a=(0.25+t*0.65).toFixed(2);
+      return v>=0?`rgba(14,154,108,${a})`:`rgba(212,0,49,${a})`;};
+    document.getElementById('heat').innerHTML = sectors.map(([n,v])=>
+      `<div class="cell" style="background:${heatColor(v)}"><span>${n}</span><small>${v>=0?'+':''}${v.toFixed(1)}%</small></div>`).join('');
+  </script>
+</body>
+</html>
